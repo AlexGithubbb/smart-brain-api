@@ -94,6 +94,8 @@ app.post('/imageurl', image.handleAPIKey);
 //     console.log(`server is listening on port 3000...`)
 //   })  
   // heroku way
-  app.listen( process.env.PORT || 3000, ()=> {
-    console.log(`server is listening on port ${process.env.PORT}...`)
+
+const PORT = process.env.PORT || 3000
+  app.listen( PORT, ()=> {
+    console.log(`server is listening on port ${PORT}...`)
   })  
