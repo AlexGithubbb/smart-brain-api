@@ -98,7 +98,7 @@ app.post('/imageurl', image.handleAPIKey);
 // bash way to define a PORT : PORT = 3000 node server.js
 
 // fish way 
-app.listen(3000, ()=> {
-  console.log(`server is listening on port ${DATABASE_URL}...`)
+app.listen( process.env.PORT ||3000, ()=> {
+  console.log(`server is listening on port ${process.env.PORT}...`)
 })  
 
