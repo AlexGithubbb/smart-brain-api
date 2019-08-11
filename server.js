@@ -33,16 +33,7 @@ app.use(cors());
 app.use(bodyParser.json())
 
 
-app.get('/', (req,res) => {
-  // res.json(database.users)
-  // db.select('*').from('users')
-  // .then(users => {
-  //   res.json(users)
-  // })
-  // .catch(err => console.log('server crush down...')
-  // )
-  res.json(database.users)
-})
+app.get('/',(req, res)=> {res.json('it is working')})
 
 // const database = {
 //   users: [
@@ -96,13 +87,13 @@ app.post('/imageurl', image.handleAPIKey);
 
 
 // LISTEN PORT
-// bash way to define a PORT : PORT = 3000 node server.js
+// bash way to define a PORT : PORT=3000 node server.js
+// fish way to define a PORT : env DATABASE_URL=3000 node server.js
 
-// fish way 
-// app.listen( 3000, ()=> {
-  //   console.log(`server is listening on port 3000...`)
-  // })  
-  
-  app.listen( process.env.PORT || 3000, ()=> {
-    console.log(`server is listening on port ${process.env.PORT}...`)
+app.listen( 3000, ()=> {
+    console.log(`server is listening on port 3000...`)
   })  
+  // heroku way
+  // app.listen( process.env.PORT || 3000, ()=> {
+  //   console.log(`server is listening on port ${process.env.PORT}...`)
+  // })  
