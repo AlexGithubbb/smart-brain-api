@@ -90,10 +90,10 @@ app.post('/imageurl', image.handleAPIKey);
 // bash way to define a PORT : PORT=3000 node server.js
 // fish way to define a PORT : env DATABASE_URL=3000 node server.js
 
-app.listen( 3000, ()=> {
-    console.log(`server is listening on port 3000...`)
-  })  
+// app.listen( 3000, ()=> {
+//     console.log(`server is listening on port 3000...`)
+//   })  
   // heroku way
-  // app.listen( process.env.PORT || 3000, ()=> {
-  //   console.log(`server is listening on port ${process.env.PORT}...`)
-  // })  
+  app.listen( process.env.PORT || 3000, ()=> {
+    console.log(`server is listening on port ${process.env.PORT}...`)
+  })  
