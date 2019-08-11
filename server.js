@@ -8,7 +8,7 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
-const DATABASE_URL = process.env.DATABASE_URL;
+// const DATABASE_URL = process.env.DATABASE_URL;
 
 
 const db = knex({
@@ -35,12 +35,13 @@ app.use(bodyParser.json())
 
 app.get('/', (req,res) => {
   // res.json(database.users)
-  db.select('*').from('users')
-  .then(users => {
-    res.json(users)
-  })
-  .catch(err => console.log('server crush down...')
-  )
+  // db.select('*').from('users')
+  // .then(users => {
+  //   res.json(users)
+  // })
+  // .catch(err => console.log('server crush down...')
+  // )
+  res.json(database.users)
 })
 
 // const database = {
