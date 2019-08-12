@@ -45,7 +45,7 @@ app.use(bodyParser.json())
 /image --> PUT = count
 */
 
-app.get('/', (req, res) => { res.json('it is working') })
+app.get('/', (req, res) => {res.send('it is working')})
 
 // Signin
 app.post('/signin', (res, req) => {signin.handleSignin(res, req, db, bcrypt)});
