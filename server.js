@@ -10,19 +10,25 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 // const DATABASE_URL = process.env.DATABASE_URL;
 
-
+// const db = knex({
+//   client: 'pg',
+//   connection: {
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: true,
+//   }
+// });
 
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
+    host: '127.0.0.1',
+    user: 'Alexpower',
+    password: '',
+    database: 'smart-brain'
   }
-});
+})
 
-
-// console.log(postgres.select('*').from('users'));
-// postgres.select('*').from('users').then(console.log);
+// db.select('*').from('users').then(console.log);
 
 const saltRounds = 10; // 2^10 = 1024  increase this if you want more iterates
 // const password = 's0/\/\P4$$w0rD';
@@ -31,37 +37,6 @@ const saltRounds = 10; // 2^10 = 1024  increase this if you want more iterates
 app.use(cors());
 app.use(bodyParser.json())
 
-
-app.get('/',(req, res)=> {res.json('it is working')})
-
-// const database = {
-//   users: [
-//     {
-//       id: '123',
-//       name: 'Bowei',
-//       email: 'bowei@gmail.com',
-//       password: 'yellow',
-//       entries: 0,
-//       joined: new Date()
-//     },
-//     {
-//       id: '124',
-//       name: 'Jessy',
-//       email: 'Jessy@gmail.com',
-//       password: 'apples',
-//       entries: 0,
-//       joined: new Date()
-//     },
-//   ],
-//   // login: [
-//   //   {
-//   //     id: '321',
-//   //     has: '',
-//   //     email: 'Bowei@gmail.com'
-//   //   }
-//   // ]
-// }
-
 /*
 / --> res = this is working
 /signin --> POST = success/fail
@@ -69,6 +44,8 @@ app.get('/',(req, res)=> {res.json('it is working')})
 /profile/:id --> GET = user
 /image --> PUT = count
 */
+
+app.get('/', (req, res) => { res.json('it is working') })
 
 // Signin
 app.post('/signin', (res, req) => {signin.handleSignin(res, req, db, bcrypt)});
@@ -89,12 +66,13 @@ app.post('/imageurl', image.handleAPIKey);
 // bash way to define a PORT : PORT=3000 node server.js
 // fish way to define a PORT : env DATABASE_URL=3000 node server.js
 
-// app.listen( 3000, ()=> {
-//     console.log(`server is listening on port 3000...`)
-//   })  
+app.listen( 3000, ()=> {
+    console.log(`server is listening on port 3000...`)
+  })  
   // heroku way
 
-const PORT = process.env.PORT || 3000
-  app.listen( PORT, ()=> {
-    console.log(`server is listening on port ${PORT}...`)
-  })  
+// const PORT = process.env.PORT || 3000
+
+//   app.listen( PORT, ()=> {
+//     console.log(`server is listening on port ${PORT}...`)
+//   })  

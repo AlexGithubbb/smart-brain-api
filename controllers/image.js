@@ -11,7 +11,7 @@ const handleAPIKey = (req, res) => {
       req.body.input
     )
     .then(response => res.json(response))
-    .catch(err => res.status(400).json('wrong api'))
+    .catch(err => res.status(400).json('wrong imageurl'))
 }
 
 const handleImage = (db) => (req, res) => {
